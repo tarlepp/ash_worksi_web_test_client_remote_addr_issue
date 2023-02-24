@@ -1,7 +1,7 @@
 # What is this?
 
-Someone didn't get `REMOTE_ADDR` working with Symfony `WebTestCase`, so
-I created this simple repository to demonstrate that is can be done.
+Someone didn't get `$_SERVER['REMOTE_ADDR']` working with Symfony `WebTestCase`,
+so I created this simple repository to demonstrate that is can be done.
 
 ## How to test this?
 

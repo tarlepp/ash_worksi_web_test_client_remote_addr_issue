@@ -22,8 +22,8 @@ class IndexControllerTest extends WebTestCase
 
     public function DataProviderTestThatClientIpWorks(): Generator
     {
-        yield [json_encode(['clientIp' => '1.1.1.1']), '1.1.1.1'];
-        yield [json_encode(['clientIp' => '1.1.1.2']), '1.1.1.2'];
-        yield [json_encode(['clientIp' => '1.1.1.3']), '1.1.1.3'];
+        foreach (['1.1.1.1', '1.1.1.2', '1.1.1.3', 'foo', 'bar'] as $ip) {
+            yield [json_encode(['clientIp' => $ip, 'remoteAddr' => $ip]), $ip];
+        }
     }
 }
