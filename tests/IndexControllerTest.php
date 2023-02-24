@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class IndexControllerTest extends WebTestCase
 {
     /**
-     * @dataProvider DataProviderTestThatClientIpWorks
+     * @dataProvider dataProviderTestThatClientIpWorks
      *
      * @testdox Test that controller returns `$expectedJson` when using `$remoteAddr` as `REMOTE_ADDR`
      */
@@ -25,7 +25,7 @@ class IndexControllerTest extends WebTestCase
         self::assertJsonStringEqualsJsonString($expectedJson, $responseContent);
     }
 
-    public function DataProviderTestThatClientIpWorks(): Generator
+    public function dataProviderTestThatClientIpWorks(): Generator
     {
         foreach (['1.1.1.1', '1.1.1.2', '1.1.1.3', 'foo', 'bar'] as $ip) {
             yield [json_encode(['clientIp' => $ip, 'remoteAddr' => $ip]), $ip];
