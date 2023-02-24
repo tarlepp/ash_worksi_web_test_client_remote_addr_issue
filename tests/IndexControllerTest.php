@@ -18,8 +18,11 @@ class IndexControllerTest extends WebTestCase
         $client->request('GET', '/');
 
         self::assertResponseIsSuccessful();
-        self::assertJson($client->getResponse()->getContent());
-        self::assertJsonStringEqualsJsonString($expectedJson, $client->getResponse()->getContent());
+
+        $responseContent = $client->getResponse()->getContent();
+
+        self::assertJson($responseContent);
+        self::assertJsonStringEqualsJsonString($expectedJson, $responseContent);
     }
 
     public function DataProviderTestThatClientIpWorks(): Generator
