@@ -17,7 +17,9 @@ class IndexControllerTest extends WebTestCase
         $client = static::createClient(server: ['REMOTE_ADDR' => $remoteAddr]);
         $client->request('GET', '/');
 
-        self::assertSame($expectedJson, $client->getResponse()->getContent());
+        self::assertResponseIsSuccessful();
+        self::assertJson($client->getResponse()->getContent());
+        self::assertJsonStringEqualsJsonString($expectedJson, $client->getResponse()->getContent());
     }
 
     public function DataProviderTestThatClientIpWorks(): Generator
